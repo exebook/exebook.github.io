@@ -1,0 +1,152 @@
+<title>Speak中</title>
+<meta charset="utf-8">
+<style>
+	y { border: 1px solid white; white-space: nowrap; font-size: 20px; }
+	y:hover { border: 1px solid #06f; cursor: pointer; }
+	py { color: black; }
+	cn { color: gray; display:none; }
+	en { color: gray; display:none; }
+</style>
+<script src=data.js charset="utf-8"></script>
+<script src=howler.min.js></script>
+<body id=body onload=go() onkeydown=keydown()>
+<button id=bpy onclick=switchLang(0) style="border:3px solid black">Pīnyīn</button>
+<button id=bcn onclick=switchLang(1)>汉语</button>
+<button id=ben onclick=switchLang(2)>English</button><p>
+<span id=nav></span><br>
+<span id=track></span><br>
+<span id=out></span><br>
+<span id=txt style=display:none></span>
+<center><img alt=loading src=loading11.gif id=loading style=display:block>
+</body>
+
+<script>
+var URL = 'http://127.0.0.1:8000/snd.mp3'
+var URL = 'snd.mp3'
+var vis = [1,0,0]
+
+function switchLang(x) {
+	var langId, show
+	if (x == 0) langId = 'py'
+	if (x == 1) langId = 'cn'
+	if (x == 2) langId = 'en'
+	if (vis[x] == 0) show = 'inline', vis[x] = 1, 
+		window['b'+langId].style.border = 'solid black 3px'
+	else show = 'none', vis[x] = 0,
+		window['b'+langId].style.border = ''
+	var Z = document.getElementsByTagName(langId)
+	
+	for (var z = 0; z < Z.length; z++)
+		Z[z].style.display = show
+}
+
+console.log(cn.length, text.length, at.length, eng.length)
+
+function getSprites() {
+	var R = {}, s = ''
+	for (var i = 0; i < text.length; i++) {
+		R[''+i] = [at[i], at[i+1] - at[i]]
+		var t = '<y onclick=sprite('+i+')>'
+			+'<py>'+ text[i] +'</py> <cn>'+ cn[i] + '</cn> <en>'+ eng[i] + '</en></y>&nbsp;'
+		if (t.indexOf('|') > 0) t = t.replace(/\|/g, ''), t += '<p>'
+//		t = t.replace(/ /g, '&nbsp;')
+		s += t + ' '
+	}
+	txt.innerHTML = s
+	return R
+}
+
+var last = 0
+
+function znext() {
+	last++
+	console.log('next', last)
+	sprite(last)
+}
+
+function sprite(a) {
+//	console.log('sprite play:', a, at[a], text[a])
+	if (playing) sound.stop()
+	sound.play(''+a)
+	last = a
+}
+
+var playing = false, begin = -1
+
+function go() {
+	nav.style.display = 'none'
+	body.focus()
+	sound = new Howl({
+//		buffer: true,
+		urls: [URL],
+		sprite: getSprites(),
+		onplay: function() {
+			playing = true
+			nav.style.backgroundColor = 'lightgreen'
+		},
+		onpause: function() {
+			playing = false
+			nav.style.backgroundColor = 'silver'
+		},
+		onend: function() {
+			playing = false
+			nav.style.backgroundColor = 'silver'
+		},
+		onload: function() {
+			txt.style.display = 'block'
+			loading.style.display = 'none'
+		}
+	})
+	navmk()
+}
+
+function log(s) {
+	out.innerHTML += '' + s
+}
+
+function keydown() {
+	znext(); return
+	var P = Math.round(sound.pos() * 1000)
+	if (playing) {
+		sound.pause()
+//		playing = false
+		log((P - begin) + '<br>')
+		begin = -1
+	} else {
+		sound.play()
+		begin = P
+//		playing = true
+		log('' + P + ',')
+	}
+}
+
+function navmk() {
+	nav.style.backgroundColor = 'silver'
+	var dur = 7 * 60 + 4
+	var s = ''
+	for (var i = 0; i < dur; i += 2) {
+		s += '<z onclick=z('+i+') onmouseover=z1('+i+')>' + '|' + '</z>'
+	}
+	nav.innerHTML = s
+}
+
+function z1(a) {
+	track.innerHTML = a
+}
+
+function z(a) {
+	var P = a * 1000
+	if (playing) {
+		begin = P
+		log('...seek to '+P+',')
+	} else {
+		sound.play()
+		begin = P
+//		playing = true
+		log(P + ',')
+	} 
+	sound.pos(a)
+}
+
+</script>
+
