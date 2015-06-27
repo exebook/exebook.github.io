@@ -1,0 +1,177 @@
+<style>
+canvas {
+	border-color: #600;
+	border-width: 1px;
+	border-style: solid;
+}
+</style>
+<canvas id=canvas1 width=800 height=800 onclick=clicked()>
+</canvas>
+
+<script>
+width = 800
+height = 800
+var c = canvas1
+var g = canvas1.getContext('2d')
+var A = []
+
+function addPoints(count, size) {
+	var R = [], x = 0, y = 0, radius = size/10
+	for (var i = 0; i < count; i++) {
+		R.push({x:Math.random()*width,y:Math.random()*height,r:radius,a:Math.random()*314,s:0})
+		x += size
+	}
+	return R
+}
+function paintRandom(A) {
+	for (var i = 0; i<A.length; i++)
+		A[i].C = 'hsl(' + 360 * Math.random() + ', 50%, 50%)'
+}
+function addGap(A, gap) {
+	var z = 0
+	for (var i = 0; i < A.length; i++)
+		A[i].x += z,
+		z += gap
+	
+}
+function moveBy(A, x, y) {
+	for (var i = 0; i < A.length; i++)
+		A[i].x += x, A[i].y += y 
+}
+
+function accelerate(A, angle, speed) {
+	for (var i = 0; i < A.length; i++)
+		A[i].a += angle, A[i].s += speed
+}
+
+function interaction(a, b) {
+	var x = b.x - a.x, y = b.y - a.y
+	var d = Math.sqrt(x*x + y*y)
+	d -= a.r + b.r
+	var sumspeed = a.s + b.s
+//	if (sumspeed > speedOfLight) speedOfLight = sumspeed, console.log(speedOfLight)
+	if (d < 0) {
+		// collision happens here
+		// I am lazy to calculate pressure or other realistic interaction
+		// so my particles just teleport randomly
+		a.x = Math.random() * width
+		a.y = Math.random() * height
+		a.a = Math.random() * 314
+	}
+}
+
+var speedOfLight = 0.2 // this constant is your maximum possible speed in the system (could be dynamically calculated though(
+
+function calcPair(a, b) {
+	var x = b.x - a.x, y = b.y - a.y
+	var d = Math.sqrt(x*x + y*y) // distabce between a&b centers
+//	d -= a.r + b.r // distance between surfaces
+	var forget = Math.floor(d / speedOfLight)
+	avg.count++
+	avg.value += forget
+	return { forgetUntil: stepNumber + forget, pair: b }
+}
+
+var cache = undefined, stepNumber = 0, whenToRebuild = 50000
+var lastRebuiltStep = 0, avg
+
+function rebuild() {
+	avg = { count: 0, value: 0 }
+	cache = []
+	for (var i = 0; i < A.length; i++) {
+		cache[i] = []
+		var a = A[i]
+		a.C = '#080'
+		for (var j = i + 1; j < A.length; j++) {
+			cache[i].push(calcPair(a, A[j]));
+		}
+		cache[i] = cache[i].sort(function(a, b)
+			{ return a.forgetUntil-b.forgetUntil })
+	}
+	console.log("rebuilt cache after:", stepNumber - lastRebuiltStep, "steps, safe for:", Math.round(avg.value/avg.count))
+	
+	lastRebuiltStep = stepNumber
+}
+
+function cacheCFD() {
+	if (stepNumber > 400) {
+//		return
+	}
+	if (cache == undefined ) {
+		rebuild()
+	}
+	var howManyAreClose = 0
+	for (var i = 0; i < A.length; i++) {
+		var R = ''
+		var a = A[i], c = cache[i]
+		for (var j = 0; j < c.length; j++) {
+			var b = c[j]
+			if (b.forgetUntil <= stepNumber) {
+				R += '*'
+				b.C = '#f00'
+				a.C = '#f00'
+				interaction(a, b.pair)
+				howManyAreClose++
+			} else {
+				R += '-' + b.forgetUntil
+				break
+			}
+		}
+//		console.log(i, R)
+	}
+	if (howManyAreClose >= whenToRebuild) cache = undefined
+//	console.log(howManyAreClose)
+}
+
+function dbg(nn) {
+	var c = cache[nn]
+	var R = []
+	for (var i = 0; i < c.length; i++) R.push(c[i].forgetUntil)
+	return R.join(',')
+}
+
+function bruteForceCFD () {
+	for (var i = 0; i < A.length; i++) {
+		for (var j = i + 1; j < A.length; j++) {
+			interaction(A[i], A[j])
+		}
+	}
+}
+
+var selectedMethod = bruteForceCFD, methodStr = 'brute force'
+
+function clicked() {
+	if (selectedMethod == cacheCFD)
+		selectedMethod = bruteForceCFD, methodStr = 'brute force'
+	else
+		selectedMethod = cacheCFD, methodStr = 'cached'
+}
+
+function step() {
+	g.clearRect(0, 0, 10000, 10000)
+	g.fillText('Step:'+stepNumber+', method:'+methodStr, 0, 40)
+	selectedMethod();
+	for (var i = 0; i < A.length; i++) {
+		g.fillStyle = A[i].C
+		g.beginPath()
+		var W = A[i].r*10, Y = A[i].y, X = A[i].x
+		g.arc(X, Y, W, W, 3*Math.PI, false)
+		g.closePath()
+		g.fill()
+//		g.fillText(dbg(i), X+5, Y)
+		A[i].x += Math.sin(A[i].a) * A[i].s
+		A[i].y += Math.cos(A[i].a) * A[i].s
+		while (A[i].x < 0) A[i].x += width
+		while (A[i].y < 0) A[i].y += height
+		while (A[i].x > width) A[i].x -= width
+		while (A[i].y > height) A[i].y -= height
+	}
+	stepNumber++;
+}
+A = addPoints(4000,2)
+accelerate(A, 0.1, 0.1)
+//paintRandom(A)
+moveBy(A, 20, 20)
+
+setInterval(step, 10)
+</script>
