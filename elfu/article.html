@@ -63,8 +63,9 @@ body {
 <body>
 <font1 size=4 face1=elfu>
 
-<h1>
-Elfu - hosti lammen</h1>
+<p><a href="https://camo.githubusercontent.com/4061b5eb25fcaaa10a55733c7a2ebee173d08da1/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f686f7374695f6c616d6d656e2e706e67" target="_blank"><img src="https://camo.githubusercontent.com/4061b5eb25fcaaa10a55733c7a2ebee173d08da1/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f686f7374695f6c616d6d656e2e706e67" alt="screenshot" data-canonical-src="http://exebook.github.io/pics/hosti_lammen.png" style="max-width:100%;"></a></p>
+
+<h1><a id="user-content-elfu---hosti-lammen" class="anchor" href="#elfu---hosti-lammen" aria-hidden="true"><span class="octicon octicon-link"></span></a>Elfu - hosti lammen</h1>
 
 <p>Elfu is highly experimental symbolic language. UNICODE contains thousands and thousands of symbols, why not use them?</p>
 
@@ -72,8 +73,7 @@ Elfu - hosti lammen</h1>
 <li>Elfu stands for elvish functional language or elvish numeric gongfu.</li>
 <li>Elfu in elvish is called <em>hosti lammen</em>, or <em>computing language</em>.</li>
 <li>Elfu is Javascript compatible, you mix Javascript and Elfu in Elfu file.</li>
-<li>Elfu file extension is <strong>.yy</strong> <em>(this is elvish)</em>
-</li>
+<li>Elfu file extension is <strong>.yy</strong> <em>(this is elvish)</em></li>
 <li>Elfu is written in Javascript itself.</li>
 <li>To type symbols we use TAB completion feature of the editor.</li>
 <li>Most of symbols are just replaced with their Javascript counterparts.</li>
@@ -81,16 +81,15 @@ Elfu - hosti lammen</h1>
 <li>Editors known to be Elfu-friendly are Sublime Text, Geany, Deodar.</li>
 <li>If your computer does not show all symbols, there is a font file <em><a href="http://exebook.github.io/fonts/elfu.ttf">elfu.ttf</a></em>.</li>
 <li>Elfu only uses Unicode standard symbols.</li>
-<li>Elfu is <em>mostly</em> reversable, in other words you can convert .yy-&gt;.js and .js-&gt;.yy. <em>Mostly</em>.</li>
+<li>Elfu is <em>mostly</em> reversable, in other words you can convert <code>.yy-&gt;.js</code> and <code>.js-&gt;.yy</code>. <em>Mostly</em>.</li>
+<li>Read this document in better font <a href="http://exebook.github.io/elfu/article.html">here</a>.</li>
 </ul>
 
-<h1>
-<a id="user-content-contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h1>
+<h1><a id="user-content-contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h1>
 
 <ul>
 <li><a href="https://github.com/exebook/elfu/blob/master/README.md#screenshot">Screenshot</a></li>
-<li>
-<a href="https://github.com/exebook/elfu/blob/master/README.md#syntax">Syntax</a>
+<li><a href="https://github.com/exebook/elfu/blob/master/README.md#syntax">Syntax</a>
 
 <ul>
 <li><a href="https://github.com/exebook/elfu#function-definition-">function definition <code>➮</code></a></li>
@@ -119,28 +118,33 @@ Elfu - hosti lammen</h1>
 <li><a href="https://github.com/exebook/elfu#finding-occurence-in-a-string-or-array-with--">finding occurence in a string or array with <code>≀</code> <code>≀≀</code></a></li>
 <li><a href="https://github.com/exebook/elfu#array-utilities---%EA%94%AC--%EA%97%9A--string-and-character-utilities---">array utilities <code>⋃</code> <code>⨄</code> <code>ꔬ</code> <code>⧉</code> <code>ꗚ</code> <code>❄</code>, string and character utilities <code>△</code> <code>◬</code> <code>⩪</code></a></li>
 <li><a href="https://github.com/exebook/elfu#symbolic-variables">symbolic variables</a></li>
-</ul>
-</li>
+</ul></li>
 <li><a href="https://github.com/exebook/elfu/blob/master/README.md#usage">Usage</a></li>
 <li><a href="https://github.com/exebook/elfu/blob/master/README.md#dotcall-syntax">Dotcall syntax</a></li>
 <li><a href="https://github.com/exebook/elfu/blob/master/README.md#feedback">Feedback</a></li>
 </ul>
 
-<h1>
-<a id="user-content-screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h1>
+<p>/*
+    TODO:
+    ∼◬ String.fromCharCode() - auto arg
+    ꘉ bind - auto arg
+    - mini functions 
+    f = ➮ a + b ⦙
+    ロ f(2, 3)</p>
 
-<p>Here is how Elfu looks in author's editor:
-<p>
-<a href="https://camo.githubusercontent.com/04f8e854cd74946cb4db443cbc833d4184c27411/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f656c6675312e706e67" target="_blank"><img src="https://camo.githubusercontent.com/04f8e854cd74946cb4db443cbc833d4184c27411/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f656c6675312e706e67" alt="screenshot" data-canonical-src="http://exebook.github.io/pics/elfu1.png" style="max-width:100%;"></a></p>
+<p>*/ </p>
 
-<h1>
-<a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax</h1>
+<h1><a id="user-content-screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h1>
+
+<p>Here is how Elfu looks in author's editor:</p>
+
+<p><a href="https://camo.githubusercontent.com/bdc5bb82c8b54cad2258eae50c75aa83aaab262e/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f656c6675322e706e67" target="_blank"><img src="https://camo.githubusercontent.com/bdc5bb82c8b54cad2258eae50c75aa83aaab262e/687474703a2f2f657865626f6f6b2e6769746875622e696f2f706963732f656c6675322e706e67" alt="screenshot" data-canonical-src="http://exebook.github.io/pics/elfu2.png" style="max-width:100%;"></a></p>
+
+<h1><a id="user-content-syntax" class="anchor" href="#syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Syntax</h1>
 
 <hr>
 
-<h5>
-<a id="user-content-function-definition-" class="anchor" href="#function-definition-" aria-hidden="true"><span class="octicon octicon-link"></span></a>function definition <code>➮</code>
-</h5>
+<h5><a id="user-content-function-definition-" class="anchor" href="#function-definition-" aria-hidden="true"><span class="octicon octicon-link"></span></a>function definition <code>➮</code></h5>
 
 <ul>
 <li>typed as <code>fu|TAB</code>.</li>
@@ -148,8 +152,7 @@ Elfu - hosti lammen</h1>
 <li>you can avoid <code>(</code>, <code>)</code> and <code>,</code> in argument declaration.</li>
 <li>if you omit any arguments, arguments <code>a</code> <code>b</code> <code>c</code> are default.</li>
 <li>use <code>➮f(){}</code> syntax to declare a function without arguments.</li>
-<li>
-<code>➮ {}</code> is a lambda with default arguments <em>a, b, c</em>.</li>
+<li><code>➮ {}</code> is a lambda with default arguments <em>a, b, c</em>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>➮ <span class="pl-en">compare</span> (<span class="pl-smi">a</span>, <span class="pl-smi">b</span>) { <span class="pl-en">console</span><span class="pl-c1">.log</span>(a <span class="pl-k">==</span> b) }
@@ -160,28 +163,21 @@ Elfu - hosti lammen</h1>
 
 <hr>
 
-<h5>
-<a id="user-content-return-statement-" class="anchor" href="#return-statement-" aria-hidden="true"><span class="octicon octicon-link"></span></a>return statement <code>$</code>
-</h5>
+<h5><a id="user-content-return-statement-" class="anchor" href="#return-statement-" aria-hidden="true"><span class="octicon octicon-link"></span></a>return statement <code>$</code></h5>
 
 <ul>
-<li>
-<code>$</code> is replaced with <code>return</code>.</li>
+<li><code>$</code> is replaced with <code>return</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>➮ four { $ <span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-c1">2</span> }</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-while-and-for-statements--and-" class="anchor" href="#while-and-for-statements--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>while and for statements <code>⧖</code> and <code>⧗</code>
-</h5>
+<h5><a id="user-content-while-and-for-statements--and-" class="anchor" href="#while-and-for-statements--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>while and for statements <code>⧖</code> and <code>⧗</code></h5>
 
 <ul>
-<li>
-<code>⧖</code> is replaced with <code>while</code>.</li>
-<li>
-<code>⧗</code> is replaced with <code>for</code>.</li>
+<li><code>⧖</code> is replaced with <code>while</code>.</li>
+<li><code>⧗</code> is replaced with <code>for</code>.</li>
 <li>typed as <code>wh|TAB</code>, <code>fo|TAB</code>.</li>
 </ul>
 
@@ -190,15 +186,11 @@ Elfu - hosti lammen</h1>
 
 <hr>
 
-<h5>
-<a id="user-content-break-and-continue-statements-" class="anchor" href="#break-and-continue-statements-" aria-hidden="true"><span class="octicon octicon-link"></span></a>break and continue statements <code>@</code>
-</h5>
+<h5><a id="user-content-break-and-continue-statements-" class="anchor" href="#break-and-continue-statements-" aria-hidden="true"><span class="octicon octicon-link"></span></a>break and continue statements <code>@</code></h5>
 
 <ul>
-<li>
-<code>@</code> is replaced with <code>break</code>.</li>
-<li>
-<code>♻</code> is replaced with <code>continue</code>.</li>
+<li><code>@</code> is replaced with <code>break</code>.</li>
+<li><code>♻</code> is replaced with <code>continue</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>⧖ (<span class="pl-c1">true</span>) {
@@ -209,17 +201,13 @@ Elfu - hosti lammen</h1>
 
 <hr>
 
-<h5>
-<a id="user-content-each-looping--and-" class="anchor" href="#each-looping--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>each looping <code>⬌</code> and <code>⬍</code>
-</h5>
+<h5><a id="user-content-each-looping--and-" class="anchor" href="#each-looping--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>each looping <code>⬌</code> and <code>⬍</code></h5>
 
 <ul>
-<li>
-<code>⬌</code> typed as <code>ea|TAB</code>.</li>
+<li><code>⬌</code> typed as <code>ea|TAB</code>.</li>
 <li>compiles to <code>for (var i = 0; i &lt; obj.length; i++)</code>.</li>
 <li>just type <code>i ⬌ obj</code>, it converts to the above.</li>
-<li>
-<code>⬍</code> typed as <code>fe|TAB</code>.`</li>
+<li><code>⬍</code> typed as <code>fe|TAB</code>.`</li>
 <li>simply converts to <code>.forEach</code>.</li>
 </ul>
 
@@ -231,18 +219,13 @@ A ⬍ (➮ { ロ a ; })</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-consolelog-ロ" class="anchor" href="#consolelog-%E3%83%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>console.log <code>ロ</code>
-</h5>
+<h5><a id="user-content-consolelog-ロ" class="anchor" href="#consolelog-ロ" aria-hidden="true"><span class="octicon octicon-link"></span></a>console.log <code>ロ</code></h5>
 
 <ul>
-<li>typed as <code>lo|TAB</code>
-</li>
-<li>
-<code>ロ</code> is Chinese/Japanese character for <em>mouth</em>.</li>
+<li>typed as <code>lo|TAB</code></li>
+<li><code>ロ</code> is Chinese/Japanese character for <em>mouth</em>.</li>
 <li>tired typing console.log hundreds times a day?</li>
-<li>
-<code>ロ</code> takes everything until the end of line or <code>;</code> as arguments.</li>
+<li><code>ロ</code> takes everything until the end of line or <code>;</code> as arguments.</li>
 <li>make sure you add ';' if your code continues on this line.</li>
 </ul>
 
@@ -253,17 +236,13 @@ A ⬍ (➮ { ロ a ; })</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-if-else-elseif---" class="anchor" href="#if-else-elseif---" aria-hidden="true"><span class="octicon octicon-link"></span></a>if, else, elseif ⌥ ⎇ ⥹</h5>
+<h5><a id="user-content-if-else-elseif---" class="anchor" href="#if-else-elseif---" aria-hidden="true"><span class="octicon octicon-link"></span></a>if, else, elseif ⌥ ⎇ ⥹</h5>
 
 <ul>
 <li>typed as <code>if|TAB</code>, <code>el|TAB</code>, <code>ei|TAB</code>.</li>
-<li>
-<code>⌥</code> is replaced with <code>if</code>.</li>
-<li>
-<code>⎇</code> is replaced with <code>else</code>.</li>
-<li>
-<code>⥹</code> is replaced with <code>else if</code>.</li>
+<li><code>⌥</code> is replaced with <code>if</code>.</li>
+<li><code>⎇</code> is replaced with <code>else</code>.</li>
+<li><code>⥹</code> is replaced with <code>else if</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>⌥ (x <span class="pl-k">==</span> <span class="pl-c1">1</span>) ロ <span class="pl-s"><span class="pl-pds">'</span>GREAT<span class="pl-pds">'</span></span>
@@ -272,40 +251,31 @@ A ⬍ (➮ { ロ a ; })</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-var-and-def--" class="anchor" href="#var-and-def--" aria-hidden="true"><span class="octicon octicon-link"></span></a>var and def ∇ ∆</h5>
+<h5><a id="user-content-var-and-def--" class="anchor" href="#var-and-def--" aria-hidden="true"><span class="octicon octicon-link"></span></a>var and def ∇ ∆</h5>
 
 <ul>
 <li>typed as <code>va|TAB</code>, <code>de|TAB</code>.</li>
-<li>
-<code>∇</code> is replaced with <code>var</code>.</li>
-<li>
-<code>∆ x</code> is translated to <code>var x =</code>.</li>
-<li>
-<code>∆</code> reads as <em>is defined as</em> or just <em>define</em>.</li>
-<li>
-<code>∆</code> supposed to be <em>delta</em>, but in fact it is a simplified form of a math symbol <code>≜</code> -- <em>definition</em> or <em>is defined as</em>.</li>
+<li><code>∇</code> is replaced with <code>var</code>.</li>
+<li><code>x ∆</code> is translated to <code>var x =</code>.</li>
+<li><code>∆</code> reads as <em>is defined as</em> or just <em>define</em>.</li>
+<li><code>∆</code> used to be <em>delta</em>, but in fact it is a simplified form of a math symbol <code>≜</code> -- <em>definition</em> or <em>is defined as</em>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>x ∆ <span class="pl-c1">100</span>
-⧗ (∇ i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> x; i<span class="pl-k">++</span>)</pre></div>
+⧗ (∇ i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> x; i<span class="pl-k">++</span>)
+a ∆ <span class="pl-c1">1</span>  b ∆ <span class="pl-s"><span class="pl-pds">'</span>string<span class="pl-pds">'</span></span>  c ∆ {}  d ∆ []
+</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-stack-operations----" class="anchor" href="#stack-operations----" aria-hidden="true"><span class="octicon octicon-link"></span></a>stack operations <code>⬊</code> <code>⬈</code> <code>⬋</code> <code>⬉</code>
-</h5>
+<h5><a id="user-content-stack-operations----" class="anchor" href="#stack-operations----" aria-hidden="true"><span class="octicon octicon-link"></span></a>stack operations <code>⬊</code> <code>⬈</code> <code>⬋</code> <code>⬉</code></h5>
 
 <ul>
-<li>
-<code>⬊</code> <code>⬈</code> are typed as <code>pu|TAB</code> and <code>po|TAB</code>.</li>
-<li>
-<code>⬊</code> is for <code>.push</code> and <code>⬈</code> is for <code>.pop</code>.</li>
-<li>you can omit <code>.</code>, <code>(</code> and <code>)</code>.</li>
-<li>
-<code>⬋</code> <code>⬉</code> are typed as <code>Pu|TAB</code> and <code>Po|TAB</code>.</li>
-<li>
-<code>⬋</code> is for <code>.shift</code> and <code>⬉</code> is for <code>.unshift</code>.</li>
+<li><code>⬊</code> <code>⬈</code> are typed as <code>pu|TAB</code> and <code>po|TAB</code>.</li>
+<li><code>⬊</code> is for <code>.push</code> and <code>⬈</code> is for <code>.pop</code>.</li>
+<li>you can omit <code>(</code> and <code>)</code>.</li>
+<li><code>⬋</code> <code>⬉</code> are typed as <code>Pu|TAB</code> and <code>Po|TAB</code>.</li>
+<li><code>⬋</code> is for <code>.shift</code> and <code>⬉</code> is for <code>.unshift</code>.</li>
 <li>mnemonically <code>shift()</code> is <code>pop()</code> from the other side.</li>
 <li>mnemonically <code>unshift()</code> is <code>push()</code> from the other side.</li>
 <li>add <code>(</code> and <code>)</code> if you push an expression.</li>
@@ -320,9 +290,7 @@ A ⬊ (<span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-
 
 <hr>
 
-<h5>
-<a id="user-content-superscript-indexing-xⁱ" class="anchor" href="#superscript-indexing-x%E2%81%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>superscript indexing <code>Xⁱ</code>
-</h5>
+<h5><a id="user-content-superscript-indexing-xⁱ" class="anchor" href="#superscript-indexing-xⁱ" aria-hidden="true"><span class="octicon octicon-link"></span></a>superscript indexing <code>Xⁱ</code></h5>
 
 <ul>
 <li><code>aⁱ</code> translates to <code>a[i]</code>.</li>
@@ -330,7 +298,7 @@ A ⬊ (<span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-
 <li><code>aⁱ⁰</code> translates to <code>a[i][0]</code>.</li>
 <li>typed as <code>.i|TAB</code> or <code>.1|TAB</code>.</li>
 <li>super-script index can only be single character.</li>
-<li>supported are all lowercase latin characters and digits 0-9.</li>
+<li>supported are all lowercase latin characters and digits <code>0</code>-<code>9</code>.</li>
 <li>do not try to use UPPERCASE characters.</li>
 <li>do not try to use multicharacter variables like <code>count</code>.</li>
 </ul>
@@ -343,24 +311,15 @@ i ⬌ B ロ Bⁱ¹</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-this-and-undefined-are---" class="anchor" href="#this-and-undefined-are---" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<code>this</code> and <code>undefined</code> are <code>⚫</code> <code>⚪</code> <code>∅</code>
-</h5>
+<h5><a id="user-content-this-and-undefined-are---" class="anchor" href="#this-and-undefined-are---" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>this</code> and <code>undefined</code> are <code>⚫</code> <code>⚪</code> <code>∅</code></h5>
 
 <ul>
-<li>
-<code>⚫</code> is translated to <code>this.</code>.</li>
-<li>
-<code>⚪</code> is translated to <code>this</code>.</li>
-<li>
-<code>∅</code> is translated to <code>undefined</code>.</li>
-<li>
-<code>⚫</code> typed as <code>th|TAB</code>.</li>
-<li>
-<code>⚪</code> typed as <code>this|TAB</code>.</li>
-<li>
-<code>∅</code> typed as <code>un|TAB</code>.</li>
+<li><code>⚫</code> is translated to <code>this.</code>.</li>
+<li><code>⚪</code> is translated to <code>this</code>.</li>
+<li><code>∅</code> is translated to <code>undefined</code>.</li>
+<li><code>⚫</code> typed as <code>th|TAB</code>.</li>
+<li><code>⚪</code> typed as <code>this|TAB</code>.</li>
+<li><code>∅</code> typed as <code>un|TAB</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>➮ f {
@@ -373,16 +332,12 @@ f.bind(⚪)()</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-comparison-operators--and-" class="anchor" href="#comparison-operators--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>comparison operators <code>≟</code> and <code>≠</code>
-</h5>
+<h5><a id="user-content-comparison-operators--and-" class="anchor" href="#comparison-operators--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>comparison operators <code>≟</code> and <code>≠</code></h5>
 
 <ul>
 <li>typed as <code>eq|TAB</code> and <code>ne|TAB</code>.</li>
-<li>
-<code>≟</code> converts to <code>==</code>.</li>
-<li>
-<code>≠</code> converts to <code>!=</code>.</li>
+<li><code>≟</code> converts to <code>==</code>.</li>
+<li><code>≠</code> converts to <code>!=</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>⌥ (x ≟ <span class="pl-c1">2</span>) ロ <span class="pl-s"><span class="pl-pds">'</span>two<span class="pl-pds">'</span></span>
@@ -390,31 +345,23 @@ f.bind(⚪)()</pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-clean-and-visible-semicolon-" class="anchor" href="#clean-and-visible-semicolon-" aria-hidden="true"><span class="octicon octicon-link"></span></a>clean and visible semicolon <code>⦙</code>
-</h5>
+<h5><a id="user-content-clean-and-visible-semicolon-" class="anchor" href="#clean-and-visible-semicolon-" aria-hidden="true"><span class="octicon octicon-link"></span></a>clean and visible semicolon <code>⦙</code></h5>
 
 <ul>
 <li>since elfu code is so condensed, many expressions fit on the same line, to improve readability of such dense code, cleaner version of semicolon <code>⦙</code> was introduced.</li>
 <li>typed as <code>sc|TAB</code>.</li>
-<li>
-<code>⦙</code> and <code>;</code> both can be used.</li>
+<li><code>⦙</code> and <code>;</code> both can be used.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>ロ <span class="pl-c1">2</span><span class="pl-k">+</span><span class="pl-c1">2</span> ⦙ ロ <span class="pl-c1">3</span><span class="pl-k">+</span><span class="pl-c1">3</span> ⦙ ロ <span class="pl-c1">4</span><span class="pl-k">+</span><span class="pl-c1">4</span> ; ロ <span class="pl-c1">5</span><span class="pl-k">+</span><span class="pl-c1">5</span></pre></div>
 
 <hr>
 
-<h5>
-<a id="user-content-delete-and-new-are--and-" class="anchor" href="#delete-and-new-are--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<code>delete</code> and <code>new</code> are <code>⏀</code> and <code>⟡</code>
-</h5>
+<h5><a id="user-content-delete-and-new-are--and-" class="anchor" href="#delete-and-new-are--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>delete</code> and <code>new</code> are <code>⏀</code> and <code>⟡</code></h5>
 
 <ul>
-<li>
-<code>⏀</code> typed as <code>dl|TAB</code>.</li>
-<li>
-<code>⟡</code> typed as <code>new|TAB</code>.</li>
+<li><code>⏀</code> typed as <code>dl|TAB</code>.</li>
+<li><code>⟡</code> typed as <code>new|TAB</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>➮ f { ⚫name <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>f1<span class="pl-pds">'</span></span> }
@@ -424,14 +371,11 @@ a ∆ ⟡ f
 
 <hr>
 
-<h5>
-<a id="user-content-length-of-an-array-or-a-string-" class="anchor" href="#length-of-an-array-or-a-string-" aria-hidden="true"><span class="octicon octicon-link"></span></a>length of an array or a string <code>↥</code>
-</h5>
+<h5><a id="user-content-length-of-an-array-or-a-string-" class="anchor" href="#length-of-an-array-or-a-string-" aria-hidden="true"><span class="octicon octicon-link"></span></a>length of an array or a string <code>↥</code></h5>
 
 <ul>
 <li>typed as <code>.le|TAB</code>.</li>
-<li>
-<code>↥</code> is translated to <code>.length</code>.</li>
+<li><code>↥</code> is translated to <code>.length</code>.</li>
 <li>do not type '.' before <code>↥</code>, it is implied.</li>
 </ul>
 
@@ -444,13 +388,11 @@ s ∆ <span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">
 
 <hr>
 
-<h5>
-<a id="user-content-require-directive-" class="anchor" href="#require-directive-" aria-hidden="true"><span class="octicon octicon-link"></span></a>require directive ≣</h5>
+<h5><a id="user-content-require-directive-" class="anchor" href="#require-directive-" aria-hidden="true"><span class="octicon octicon-link"></span></a>require directive ≣</h5>
 
 <ul>
 <li>typed as <code>re|TAB</code>.</li>
-<li>
-<code>≣</code> is replaced with <code>require</code>.</li>
+<li><code>≣</code> is replaced with <code>require</code>.</li>
 <li>you can use <code>(</code> and <code>)</code> or avoid them.</li>
 </ul>
 
@@ -459,28 +401,16 @@ spawn ∆ ≣ (<span class="pl-s"><span class="pl-pds">'</span>child_process<spa
 
 <hr>
 
-<h5>
-<a id="user-content-math-functions---" class="anchor" href="#math-functions---" aria-hidden="true"><span class="octicon octicon-link"></span></a>Math functions <code>⍽</code> <code>⬠</code> <code>⚂</code>
-</h5>
+<h5><a id="user-content-math-functions---" class="anchor" href="#math-functions---" aria-hidden="true"><span class="octicon octicon-link"></span></a>Math functions <code>⍽</code> <code>⬠</code> <code>⚂</code></h5>
 
 <ul>
-<li>
-<code>⚂</code> is typed as <code>ra|TAB</code>.</li>
-<li>
-<code>⚂</code> is converted to <code>Math.random()</code>
-</li>
-<li>
-<code>⬠</code> is typed as <code>ro|TAB</code>.</li>
-<li>
-<code>⬠</code> is converted to <code>Math.round()</code>
-</li>
-<li>
-<code>⍽</code> is typed as <code>fl|TAB</code>.</li>
-<li>
-<code>⍽</code> is converted to <code>Math.floor()</code>
-</li>
-<li>
-<code>⬠</code> and <code>⍽</code> can omit <code>(</code> and <code>)</code> for simple expressions.</li>
+<li><code>⚂</code> is typed as <code>ra|TAB</code>.</li>
+<li><code>⚂</code> is converted to <code>Math.random()</code></li>
+<li><code>⬠</code> is typed as <code>ro|TAB</code>.</li>
+<li><code>⬠</code> is converted to <code>Math.round()</code></li>
+<li><code>⍽</code> is typed as <code>fl|TAB</code>.</li>
+<li><code>⍽</code> is converted to <code>Math.floor()</code></li>
+<li><code>⬠</code> and <code>⍽</code> can omit <code>(</code> and <code>)</code> for simple expressions.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>⧗ (i ∆ <span class="pl-c1">0</span> ⦙ i <span class="pl-k">&lt;</span> <span class="pl-c1">20</span>; i<span class="pl-k">++</span>) ロ ⬠ (⚂ <span class="pl-k">*</span> <span class="pl-c1">1000000</span>)</pre></div>
@@ -490,9 +420,7 @@ spawn ∆ ≣ (<span class="pl-s"><span class="pl-pds">'</span>child_process<spa
 
 <hr>
 
-<h5>
-<a id="user-content-infinite-loop-" class="anchor" href="#infinite-loop-" aria-hidden="true"><span class="octicon octicon-link"></span></a>infinite loop <code>∞</code>
-</h5>
+<h5><a id="user-content-infinite-loop-" class="anchor" href="#infinite-loop-" aria-hidden="true"><span class="octicon octicon-link"></span></a>infinite loop <code>∞</code></h5>
 
 <ul>
 <li>typed as <code>in|TAB</code>.</li>
@@ -514,33 +442,20 @@ spawn ∆ ≣ (<span class="pl-s"><span class="pl-pds">'</span>child_process<spa
 
 <hr>
 
-<h5>
-<a id="user-content-time-operations---" class="anchor" href="#time-operations---" aria-hidden="true"><span class="octicon octicon-link"></span></a>time operations <code>⌛</code> <code>⌚</code> <code>⚡</code>
-</h5>
+<h5><a id="user-content-time-operations---" class="anchor" href="#time-operations---" aria-hidden="true"><span class="octicon octicon-link"></span></a>time operations <code>⌛</code> <code>⌚</code> <code>⚡</code></h5>
 
 <ul>
-<li>
-<code>⌛</code> is converted to <code>setTimeout</code>.</li>
-<li>
-<code>⌚</code> is converted to <code>setInterval</code>.</li>
-<li>
-<code>⌿⌛</code> is converted to <code>clearTimeout</code>.</li>
-<li>
-<code>⌿⌚</code> is converted to <code>clearInterval</code>.</li>
-<li>
-<code>⚡</code> is converted to <code>(new Date().getTime())</code>.</li>
-<li>
-<code>⚡</code> gives you millisecond tick.</li>
-<li>
-<code>⌛</code> is typed as <code>st|TAB</code>.</li>
-<li>
-<code>⌚</code> is typed as <code>si|TAB</code>.</li>
-<li>
-<code>⚡</code> is typed as <code>tt|TAB</code> <em>(mnemonic: time tick)</em>.</li>
-<li>
-<code>⌿⌛</code> is typed as <code>ct|TAB</code>.</li>
-<li>
-<code>⌿⌚</code> is typed as <code>ci|TAB</code>.</li>
+<li><code>⌛</code> is converted to <code>setTimeout</code>.</li>
+<li><code>⌚</code> is converted to <code>setInterval</code>.</li>
+<li><code>⌿⌛</code> is converted to <code>clearTimeout</code>.</li>
+<li><code>⌿⌚</code> is converted to <code>clearInterval</code>.</li>
+<li><code>⚡</code> is converted to <code>(new Date().getTime())</code>.</li>
+<li><code>⚡</code> gives you millisecond tick.</li>
+<li><code>⌛</code> is typed as <code>st|TAB</code>.</li>
+<li><code>⌚</code> is typed as <code>si|TAB</code>.</li>
+<li><code>⚡</code> is typed as <code>tt|TAB</code> <em>(mnemonic: time tick)</em>.</li>
+<li><code>⌿⌛</code> is typed as <code>ct|TAB</code>.</li>
+<li><code>⌿⌚</code> is typed as <code>ci|TAB</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>ロ <span class="pl-s"><span class="pl-pds">'</span>please wait two seconds<span class="pl-pds">'</span></span>
@@ -552,44 +467,32 @@ spawn ∆ ≣ (<span class="pl-s"><span class="pl-pds">'</span>child_process<spa
 
 <hr>
 
-<h5>
-<a id="user-content-nodejs-fs-functions--" class="anchor" href="#nodejs-fs-functions--" aria-hidden="true"><span class="octicon octicon-link"></span></a>node.js <code>fs</code> functions <code>⛁</code>, <code>⛃</code>
-</h5>
+<h5><a id="user-content-nodejs-fs-functions--" class="anchor" href="#nodejs-fs-functions--" aria-hidden="true"><span class="octicon octicon-link"></span></a>node.js <code>fs</code> functions <code>⛁</code>, <code>⛃</code></h5>
 
 <ul>
-<li>
-<code>⛁</code> is replaced with <code>fs.readFileSync</code>.</li>
-<li>
-<code>⛃</code> is replaced with <code>fs.writeFileSync</code>.</li>
-<li>
-<code>⛁</code> is typed <code>fsrs|TAB</code>.</li>
-<li>
-<code>⛃</code> is typed <code>fsws|TAB</code>.</li>
+<li><code>⛁</code> is replaced with <code>fs.readFileSync</code>.</li>
+<li><code>⛃</code> is replaced with <code>fs.writeFileSync</code>.</li>
+<li><code>⛁</code> is typed <code>fsrs|TAB</code>.</li>
+<li><code>⛃</code> is typed <code>fsws|TAB</code>.</li>
+<li>you can omit <code>(</code> and <code>)</code> for  ⛁ with a single argument.</li>
 </ul>
 
-<pre><code></code></pre>
+<div class="highlight highlight-javascript"><pre>fs ∆ ≣ <span class="pl-s"><span class="pl-pds">'</span>fs<span class="pl-pds">'</span></span>
+A ∆ ⛁<span class="pl-s"><span class="pl-pds">'</span>readme.txt<span class="pl-pds">'</span></span> ≂ ⌶ <span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\n</span><span class="pl-pds">'</span></span>
+ロ A ↥, <span class="pl-s"><span class="pl-pds">'</span>lines loaded<span class="pl-pds">'</span></span></pre></div>
+
 <hr>
 
-<h5>
-<a id="user-content-str-serialization-with---" class="anchor" href="#str-serialization-with---" aria-hidden="true"><span class="octicon octicon-link"></span></a>str serialization with <code>⌶</code> <code>⫴</code> <code>≂</code>.</h5>
+<h5><a id="user-content-str-serialization-with---" class="anchor" href="#str-serialization-with---" aria-hidden="true"><span class="octicon octicon-link"></span></a>str serialization with <code>⌶</code> <code>⫴</code> <code>≂</code>.</h5>
 
 <ul>
-<li>
-<code>⌶</code> is typed as <code>sp|TAB</code>.</li>
-<li>
-<code>⫴</code> is typed as <code>jo|TAB</code>.</li>
-<li>
-<code>≂</code> is typed as <code>ts|TAB</code>.</li>
-<li>
-<code>⌶</code> is compiled as <code>.split</code>
-</li>
-<li>
-<code>⫴</code> is compiled as <code>.join</code>
-</li>
+<li><code>⌶</code> is typed as <code>sp|TAB</code>.</li>
+<li><code>⫴</code> is typed as <code>jo|TAB</code>.</li>
+<li><code>≂</code> is typed as <code>ts|TAB</code>.</li>
+<li><code>⌶</code> is compiled as <code>.split</code></li>
+<li><code>⫴</code> is compiled as <code>.join</code></li>
 <li>you can omit <code>(</code> and <code>)</code> for simple expressions with <code>⌶</code>, <code>⫴</code> and <code>≂</code>.</li>
-<li>
-<code>≂</code> is converted to <code>.toString</code>
-</li>
+<li><code>≂</code> is converted to <code>.toString</code></li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-c">// replace all occurences of "-" with "+"</span>
@@ -606,19 +509,13 @@ s ∆ <span class="pl-s"><span class="pl-pds">'</span>-+<span class="pl-pds">'</
 
 <hr>
 
-<h5>
-<a id="user-content-booleans--and-" class="anchor" href="#booleans--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>booleans <code>⦿</code> and <code>⦾</code>
-</h5>
+<h5><a id="user-content-booleans--and-" class="anchor" href="#booleans--and-" aria-hidden="true"><span class="octicon octicon-link"></span></a>booleans <code>⦿</code> and <code>⦾</code></h5>
 
 <ul>
-<li>
-<code>⦿</code> is replaced with <code>true</code>.</li>
-<li>
-<code>⦾</code> is replaced with <code>false</code>.</li>
-<li>
-<code>⦿</code> is typed as <code>tr|TAB</code>.</li>
-<li>
-<code>⦾</code> is typed as <code>fa|TAB</code>.</li>
+<li><code>⦿</code> is replaced with <code>true</code>.</li>
+<li><code>⦾</code> is replaced with <code>false</code>.</li>
+<li><code>⦿</code> is typed as <code>tr|TAB</code>.</li>
+<li><code>⦾</code> is typed as <code>fa|TAB</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>    a ∆ ⦿
@@ -627,21 +524,14 @@ s ∆ <span class="pl-s"><span class="pl-pds">'</span>-+<span class="pl-pds">'</
 
 <hr>
 
-<h5>
-<a id="user-content-last-item-of-a-string-or-an-array-ꕉ-" class="anchor" href="#last-item-of-a-string-or-an-array-%EA%95%89-" aria-hidden="true"><span class="octicon octicon-link"></span></a>last item of a string or an array <code>ꕉ</code> <code>↟</code>
-</h5>
+<h5><a id="user-content-last-item-of-a-string-or-an-array-ꕉ-" class="anchor" href="#last-item-of-a-string-or-an-array-ꕉ-" aria-hidden="true"><span class="octicon octicon-link"></span></a>last item of a string or an array <code>ꕉ</code> <code>↟</code></h5>
 
 <ul>
-<li>
-<code>ꕉ</code> is typed as <code>.la|TAB</code>.</li>
-<li>
-<code>↟</code> is typed as <code>.lx|TAB</code>.</li>
-<li>
-<code>ꕉ</code> is used to access the last item of an array or a string.</li>
-<li>
-<code>ꕉ</code> is compiled to <code>[x.length - 1]</code>, so <code>xꕉ</code> becomes <code>x[x.length - 1]</code>.</li>
-<li>
-<code>x↟</code> is compiled to <code>(x.length - 1)</code>.</li>
+<li><code>ꕉ</code> is typed as <code>.la|TAB</code>.</li>
+<li><code>↟</code> is typed as <code>.lx|TAB</code>.</li>
+<li><code>ꕉ</code> is used to access the last item of an array or a string.</li>
+<li><code>ꕉ</code> is compiled to <code>[x.length - 1]</code>, so <code>xꕉ</code> becomes <code>x[x.length - 1]</code>.</li>
+<li><code>x↟</code> is compiled to <code>(x.length - 1)</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>A ∆ [<span class="pl-s"><span class="pl-pds">'</span>X<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>Y<span class="pl-pds">'</span></span>]
@@ -663,21 +553,14 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 
 <hr>
 
-<h5>
-<a id="user-content-finding-occurence-in-a-string-or-array-with--" class="anchor" href="#finding-occurence-in-a-string-or-array-with--" aria-hidden="true"><span class="octicon octicon-link"></span></a>finding occurence in a string or array with <code>≀</code> <code>≀≀</code>
-</h5>
+<h5><a id="user-content-finding-occurence-in-a-string-or-array-with--" class="anchor" href="#finding-occurence-in-a-string-or-array-with--" aria-hidden="true"><span class="octicon octicon-link"></span></a>finding occurence in a string or array with <code>≀</code> <code>≀≀</code></h5>
 
 <ul>
-<li>
-<code>≀</code> is typed as <code>io|TAB</code>.</li>
-<li>
-<code>≀≀</code> is typed as <code>lio|TAB</code> or <code>io|TABio|TAB</code>.</li>
-<li>
-<code>≀</code> is replaced with <code>.indexOf</code>.</li>
-<li>
-<code>≀≀</code> is replaced with <code>.lastIndexOf</code>.</li>
-<li>
-<code>(</code> and <code>)</code> can be used or omited.</li>
+<li><code>≀</code> is typed as <code>io|TAB</code>.</li>
+<li><code>≀≀</code> is typed as <code>lio|TAB</code> or <code>io|TABio|TAB</code>.</li>
+<li><code>≀</code> is replaced with <code>.indexOf</code>.</li>
+<li><code>≀≀</code> is replaced with <code>.lastIndexOf</code>.</li>
+<li><code>(</code> and <code>)</code> can be used or omited.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>s ∆ <span class="pl-s"><span class="pl-pds">'</span>hello world!<span class="pl-pds">'</span></span>
@@ -686,47 +569,27 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 
 <hr>
 
-<h5>
-<a id="user-content-array-utilities---ꔬ--ꗚ--string-and-character-utilities---" class="anchor" href="#array-utilities---%EA%94%AC--%EA%97%9A--string-and-character-utilities---" aria-hidden="true"><span class="octicon octicon-link"></span></a>array utilities <code>⋃</code> <code>⨄</code> <code>ꔬ</code> <code>⧉</code> <code>ꗚ</code> <code>❄</code>, string and character utilities <code>△</code> <code>◬</code> <code>⩪</code>
-</h5>
+<h5><a id="user-content-array-utilities---ꔬ--ꗚ--string-and-character-utilities---" class="anchor" href="#array-utilities---ꔬ--ꗚ--string-and-character-utilities---" aria-hidden="true"><span class="octicon octicon-link"></span></a>array utilities <code>⋃</code> <code>⨄</code> <code>ꔬ</code> <code>⧉</code> <code>ꗚ</code> <code>❄</code>, string and character utilities <code>△</code> <code>◬</code> <code>⩪</code></h5>
 
 <ul>
-<li>
-<code>⋃</code> is typed as <code>sl|TAB</code>.</li>
-<li>
-<code>⨄</code> is typed as <code>pl|TAB</code>.</li>
-<li>
-<code>ꔬ</code> is typed as <code>fi|TAB</code>.</li>
-<li>
-<code>⧉</code> is typed as <code>ma|TAB</code>.</li>
-<li>
-<code>ꗚ</code> is typed as <code>aa|TAB</code>.</li>
-<li>
-<code>❄</code> is typed as <code>so|TAB</code>.</li>
-<li>
-<code>⋃</code> is replaced with <code>.slice</code>.</li>
-<li>
-<code>⨄</code> is replaced with <code>.splice</code>.</li>
-<li>
-<code>ꔬ</code> is replaced with <code>.filter</code>.</li>
-<li>
-<code>⧉</code> is replaced with <code>.map</code>.</li>
-<li>
-<code>ꗚ</code> is replaced with <code>.concat</code>.</li>
-<li>
-<code>❄</code> is replaced with <code>.sort</code>.</li>
-<li>
-<code>◬</code> is typed as <code>cc|TAB</code>.</li>
-<li>
-<code>△</code> is typed as <code>ca|TAB</code>.</li>
-<li>
-<code>⩪</code> is typed as <code>su|TAB</code>.</li>
-<li>
-<code>◬</code> is replaced with <code>.charCodeAt</code>.</li>
-<li>
-<code>△</code> is replaced with <code>.charAt</code>.</li>
-<li>
-<code>⩪</code> is replaced with <code>.substr</code>.</li>
+<li><code>⋃</code> is typed as <code>sl|TAB</code>.</li>
+<li><code>⨄</code> is typed as <code>pl|TAB</code>.</li>
+<li><code>ꔬ</code> is typed as <code>fi|TAB</code>.</li>
+<li><code>⧉</code> is typed as <code>ma|TAB</code>.</li>
+<li><code>ꗚ</code> is typed as <code>aa|TAB</code>.</li>
+<li><code>❄</code> is typed as <code>so|TAB</code>.</li>
+<li><code>⋃</code> is replaced with <code>.slice</code>.</li>
+<li><code>⨄</code> is replaced with <code>.splice</code>.</li>
+<li><code>ꔬ</code> is replaced with <code>.filter</code>.</li>
+<li><code>⧉</code> is replaced with <code>.map</code>.</li>
+<li><code>ꗚ</code> is replaced with <code>.concat</code>.</li>
+<li><code>❄</code> is replaced with <code>.sort</code>.</li>
+<li><code>◬</code> is typed as <code>cc|TAB</code>.</li>
+<li><code>△</code> is typed as <code>ca|TAB</code>.</li>
+<li><code>⩪</code> is typed as <code>su|TAB</code>.</li>
+<li><code>◬</code> is replaced with <code>.charCodeAt</code>.</li>
+<li><code>△</code> is replaced with <code>.charAt</code>.</li>
+<li><code>⩪</code> is replaced with <code>.substr</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>➮ numbersOnly { $ a ⌶ <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span> ꔬ (➮ { $ a◬(<span class="pl-c1">0</span>) <span class="pl-k">&lt;=</span> <span class="pl-c1">57</span> }) }
@@ -738,14 +601,12 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 
 <hr>
 
-<h5>
-<a id="user-content-symbolic-variables" class="anchor" href="#symbolic-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>symbolic variables</h5>
+<h5><a id="user-content-symbolic-variables" class="anchor" href="#symbolic-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>symbolic variables</h5>
 
 <ul>
 <li>there are three types of symbolic variables.</li>
 <li>the goal is to provide more condense, formula-like notation.</li>
-<li>
-<code>α</code> <code>γ</code> <code>β</code> ... <code>ζ</code> are <em>greek letters</em>.</li>
+<li><code>α</code> <code>γ</code> <code>β</code> ... <code>ζ</code> are <em>greek letters</em>.</li>
 <li>Javascript supports greek letters, no translation is needed.</li>
 <li>Typing in greek: alf=α bet=β gam=γ del=δ eps=ε zet=ζ eta=η tet=θ iot=ι kap=κ lam=λ muu=μ nuu=ν xii=ξ pii=π roo=ρ sig=σ tau=τ ups=υ fii=φ chi=χ psi=ψ ome=ω.</li>
 </ul>
@@ -755,8 +616,7 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 ロ <span class="pl-s"><span class="pl-pds">'</span>alfa plus delta is:<span class="pl-pds">'</span></span>, α</pre></div>
 
 <ul>
-<li>
-<code>ⓐ</code> <code>ⓑ</code> <code>ⓒ</code> ... <code>ⓩ</code> are <em>encircled letters</em>. </li>
+<li><code>ⓐ</code> <code>ⓑ</code> <code>ⓒ</code> ... <code>ⓩ</code> are <em>encircled letters</em>. </li>
 <li>encircled letters are typed <code>ooa|TAB</code>, <code>oob|TAB</code>, <code>ooz|TAB</code> etc.</li>
 <li>they are useful if you are out of latin letters.</li>
 <li>internally they are represented as <code>_oo_0</code> to <code>_oo_26</code>.</li>
@@ -766,34 +626,25 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 ロ ⓐ, ⓩ</pre></div>
 
 <ul>
-<li>
-<code>❶</code> <code>❷</code> <code>①</code> <code>②</code> are <code>tags</code> or <code>labels</code>, they have special syntax.</li>
-<li>
-<code>❶</code> is a <em>label definition</em>, <code>❶ 5</code> equals to <code>;var var0 = 5</code>.</li>
-<li>
-<code>①</code> is a <em>label reference</em>, or usage, <code>ロ ①</code> will convert to <code>console.log(var0)</code>.</li>
+<li><code>❶</code> <code>❷</code> <code>①</code> <code>②</code> are <code>tags</code> or <code>labels</code>, they have special syntax.</li>
+<li><code>❶</code> is a <em>label definition</em>, <code>❶ 5</code> equals to <code>;var var0 = 5</code>.</li>
+<li><code>①</code> is a <em>label reference</em>, or usage, <code>ロ ①</code> will convert to <code>console.log(var0)</code>.</li>
 </ul>
 
 <div class="highlight highlight-javascript"><pre>❶ <span class="pl-s"><span class="pl-pds">'</span>hello<span class="pl-pds">'</span></span> ❷ <span class="pl-s"><span class="pl-pds">'</span>world<span class="pl-pds">'</span></span>
 ロ ①, ②</pre></div>
 
-<h1>
-<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+<h1><a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 
 <ul>
 <li>install with <strong>npm</strong>, <code>[sudo] npm i -g elfu</code>.</li>
-<li>
-<code>yy &lt;program&gt;</code> run the <code>.yy</code> program.</li>
-<li>
-<code>yyj program.yy</code> convert <code>program.yy</code> to Javascript. Data is written to standart outout.</li>
-<li>
-<code>jyy program.js</code> convert Javascript to Elfu.</li>
-<li>
-<code>require('elfu'); require('example.yy')</code> you can require modules written in Elfu.</li>
+<li><code>yy &lt;program&gt;</code> run the <code>.yy</code> program.</li>
+<li><code>yyj program.yy</code> convert <code>program.yy</code> to Javascript. Data is written to standart outout.</li>
+<li><code>jyy program.js</code> convert Javascript to Elfu.</li>
+<li><code>require('elfu'); require('example.yy')</code> you can require modules written in Elfu.</li>
 </ul>
 
-<h1>
-<a id="user-content-dotcall-syntax" class="anchor" href="#dotcall-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dotcall syntax</h1>
+<h1><a id="user-content-dotcall-syntax" class="anchor" href="#dotcall-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dotcall syntax</h1>
 
 <ul>
 <li>Elfu supports <em>dotcall</em> syntax.</li>
@@ -801,17 +652,11 @@ z ∆ appendAndReturnIndex(<span class="pl-s"><span class="pl-pds">'</span>Z<spa
 <li>read <a href="https://github.com/exebook/dotcall">dotcall README</a> for details.</li>
 </ul>
 
-<h1>
-<a id="user-content-feedback" class="anchor" href="#feedback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback</h1>
+<h1><a id="user-content-feedback" class="anchor" href="#feedback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feedback</h1>
 
 <ul>
 <li>post your ideas and other feedback in <em>issues</em> on github page.</li>
 <li>Github page is <a href="https://github.com/exebook/elfu">https://github.com/exebook/elfu</a>.</li>
-<li>author's email: <code>exebook gmail com</code>
-</li>
-<li>author's VK page: <a href="http://vk.com/chucknorrisgriboedov">http://vk.com/chucknorrisgriboedov</a>
-</li>
+<li>author's email: <code>exebook gmail com</code></li>
+<li>author's VK page: <a href="http://vk.com/chucknorrisgriboedov">http://vk.com/chucknorrisgriboedov</a></li>
 </ul>
-
-
-</font>
