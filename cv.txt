@@ -1,0 +1,80 @@
+
+YAKOV SUDEIKIN (Jacob)
+exebook@gmail.com
+http://stackoverflow.com/users/1968972/exebook
+https://github.com/exebook
+http://habrahabr.ru/users/4p4/
+
+More than 20 years of experience in software design, development and marketing. Open source and community enthusiast.
+
+OBJECTIVE
+
+Make cutting edge network software in office or remotely.
+
+TECHNOLOGIES
+
+JavaScript, Node.js, C/C++, HTML5, Redis, MySQL, Sqlite.
+
+KEY SKILLS
+
+Design and implementation of heavy load, high available client/server solutions.
+Code, memory and bandwidth optimization.
+Open to advanced software development practices (Scrum, TDD, CI etc).
+
+WORK HISTORY
+
+2011-present Self-employed.
+
+Design and develop the social network.
+Create Deodar a file manager and powerful text editor in one for Linux.
+Create unique symbolic programming language Elfu that compiles to JavaScrip.
+
+Use (and develop in-house) in-memory and NoSQL databases. Write completely asynchronous, atomic AJAX backends in C++. Use npm intensively. Create Node.js C++ addons. Use lib_uv. Design and use Micro-services. Use sharding, partitioning and other techniques that enable a distribution of the database over a number of machines.
+
+
+2012-2013 Palmforce, Taipei, Senior Software Developer
+
+Develop cross-platform mobile software in very formal strict environment. Create multi-platform JavaScript native framework for Android, iOS, Windows. Mix proprietary and open-source code. Embed JavaScript engines SpiderMonkey and v8.
+
+
+2009-present Ksana Forge, Karmapa Foundation (remote), Senior Software Developer
+
+Create and optimize high performance algorithms in the areas of text search, data storage, text processing, 2D graphics, data compression, sophisticated text editing and markup in JavaScript, ActionScript/Flash, C/C++, Java, ObjectiveC. In recent years we moved most our projects under JavaScript, Node.js and HTML5. The effort is also to move mobile development under React Native.
+
+To optimize JavaScript code to maximum performance and minimal memory footprint by learning the internals of JavaScript engines, it's memory allocator, code generator, built-in profiler.
+
+
+2001-2008 Founded and lead a software company Exebook.com.
+
+Create and market small software company, generate ideas, research market, lead the product development, code in Delphi and C++ for Windows, hire and manage personnel, provide daily customer support over Internet.
+
+
+2001-2004 Champay.com, Netherlands/Latvia, Chief Software Architect.
+
+To design and lead the development of a high load and high availability website with a wide range of financial features.
+
+Develop in C and MySQL a very secure and fast backend kernel that ran on FreeBSD and that included fast money transaction subsystem, CMS and a set of tools to control operations. Lead the team of developers and designers to use this kernel to develop the final product. Develop front end features as fast as possible while maintaining solid, secure and robust backend.
+
+
+1999-2001 Self employed, shareware project.
+
+Lead a small team of friends to develop the client/server system in Delphi and MSAccess to monitor multiple computers.
+
+To do the full cycle software innovation from original idea to sale. Store big amounts of data on the fly, access it quickly, optimize SQL tables and queries, use various network protocols.
+
+
+1994-1999 Self employed software developer. Saint-Petersburg.
+
+Design, implement and support various software products and SDKs for my customers. Including business automation, accounting, warehouse, hardware drivers, examination software etc. Consult in software.
+
+Meet customer needs and deadlines, provide reliable and quality software, do proper testing, documentation and support. Program professionally for DOS, Windows, in Pascal, C. 
+
+Create a unique ticketing system based on a DSL language for www.spbckk.ru, largest sports hall in Europe at that time.
+
+Create a graphical city-level poster distribution system for www.hpo.ru, the eldest outdoor advertisement company in Russia.
+
+Some other customers included: ihbt.ifmo.ru, www.multigraphic.ru, ksi.spb.ru, apes-npc.spb24.net, www.nwpi.ru.
+
+
+
+
