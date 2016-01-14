@@ -1,0 +1,269 @@
+/*
+	TODO:
+	- improve visualizers
+	- create sound transport, so that audio is played in small chunks
+		and new keyboard notes can mix with unfinished ones almost instantly
+	- either make fade-in/fade-out on range, or make spin work not on
+		a single array of samples, but store each note separately in
+		an array of arrays
+*/
+<canvas id=canvas1 width=500 height=200 style='border:1px solid gray'>
+</canvas><button onclick=stopPlay()>stop</button>
+<br>
+<textarea id=textarea1 rows=10 cols=40 onclick=stopPlay()>
+	a = sine(441, 1)
+	show(a)
+	play(a)
+</textarea>
+
+
+
+<button onclick=exec()>exec</button>
+
+<script>
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+ctx = canvas1.getContext('2d')
+
+var context = new AudioContext(), source
+
+function stopPlay() {
+	console.log('STOP')
+	source.stop(0);
+}
+
+function playSound(arr) {
+	var buf = new Float32Array(arr.length)
+	for (var i = 0; i < arr.length; i++) buf[i] = arr[i]
+	var buffer = context.createBuffer(1, buf.length, context.sampleRate)
+	buffer.copyToChannel(buf, 0)
+	source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+}
+var toneStep = 1.059464
+var beats = 140
+var tone = 441
+
+function N(sample, tone) {
+	var q = context.sampleRate / tone
+	return sample / (q / (Math.PI*2))
+}
+
+function mkbuf(beats) {
+	var x = context.sampleRate / beats
+	var R = []
+	for (var i = 0; i < x; i++) R.push(0)
+	return R
+}
+
+function sineWaveAt(sampleNumber, tone) {
+	var sampleFreq = context.sampleRate / tone
+	return Math.sin(sampleNumber / (sampleFreq / (Math.PI*2)))
+}
+
+function sine(tone, beats) {
+	var arr = mkbuf(beats)
+	for (var i = 0; i < arr.length; i++) {
+		arr[i] = Math.sin(N(i, tone))/5
+	}
+	return arr
+}
+
+function show(a) {
+	console.log('SHOW')
+}
+
+function play(a) {
+	playSound(a)
+}
+
+function exec() {
+	var s = textarea1.value
+	console.log(s)
+	eval(s)
+}
+
+function newSpin() {
+	var spin = { speed:0, angle:0, arr:[] }
+	return spin
+}
+
+function spinSpeedEffect(spin) {
+	spin.speed += (Math.random()-0.5) * (spin.speed / 10000)
+}
+
+function spinSine(spin, tone, seconds, volume, effect, turnsToAccelerate) {
+	var samplesPerCycle = context.sampleRate / tone
+	var pi2 = Math.PI * 2
+	var desiredSpeed = pi2 / samplesPerCycle
+	if (turnsToAccelerate == undefined) turnsToAccelerate = 8
+	var accel = Math.abs(spin.speed - desiredSpeed) 
+		/ (samplesPerCycle*turnsToAccelerate)
+	var count = 0
+	for (var i = 0; i < context.sampleRate * seconds; i++) {
+		if (spin.speed < desiredSpeed) {
+			spin.speed += accel
+			if (spin.speed > desiredSpeed) {
+				spin.speed = desiredSpeed
+			}
+		}
+		if (spin.speed > desiredSpeed) {
+			spin.speed -= accel
+			if (spin.speed < desiredSpeed) {
+				spin.speed = desiredSpeed
+			}
+		}
+		spin.angle += spin.speed
+		if (spin.angle > pi2) count++
+		spin.angle %= pi2
+		var value = Math.sin(spin.angle)
+		spin.arr.push(value * volume)
+		if (effect) effect(spin)
+	}
+	spin.volume = volume // needed for some effects
+}
+
+function spinFinish(spin) {
+	var pi2 = Math.PI * 2
+	for (var i = 0; i < context.sampleRate * 0.1; i++) {
+		spin.angle += spin.speed
+		if (spin.angle > pi2) {
+			spin.arr.push(0)
+			return
+		}
+		var value = Math.sin(spin.angle)
+		spin.arr.push(value * spin.volume)
+	}
+}
+
+function showWave(a, color, deltaY, zoomOut) {
+	ctx.fillStyle = color
+	for (var x = 0; x < 500; x++) {
+		var y = (a[x*zoomOut] + 1) * 100
+		ctx.fillRect(x, y+deltaY, 1, 1)
+	}
+}
+
+function fadeOut(arr, seconds) {
+	var n = context.sampleRate * seconds
+	var begin = arr.length - n
+	if (begin < 0) begin = 0
+	var end = arr.length
+	for (var x = begin; x < end; x++) {
+		var q = 1 - ((x-begin) / (end - begin))
+		arr[x] *= q
+	} 
+}
+
+function fadeIn(arr, seconds) {
+	var end = context.sampleRate * seconds
+	if (end > arr.length) end = arr.length
+	for (var x = 0; x < end; x++) {
+		arr[x] *= x / end
+	}
+}
+
+function mixArr(a, b, balance) {
+	var max = a.length, min = b.length, longer = a, longBal = balance
+	if (max < b.length) {
+		max = b.length, min = a.length, longer = b, longBal = 1-balance
+	}
+	var R = [], x = 0
+	while (x < min) {
+		R.push(a[x]*balance + b[x]*(1-balance))
+		x++
+	}
+	while (x < max) {
+		R.push(longer[x]*longBal)
+		x++
+	}
+	return R
+}
+
+var majorScheme = //'1-1-11-1-1-1'
+	'zZxXcvVbBnNm' + 'aAsSdfFgGhHj' + 'qQwWerRtTyYu'
+
+function makeScale(startTone, letters) {
+	var tone = startTone
+	var R = {}
+	for (var l = 0; l < letters.length; l++) {
+		R[letters[l]] = tone
+		tone *= toneStep
+	}
+	return R
+}
+
+function melody(spin, scale, mel, volume) {
+	var len = 60/beats
+	var octave = 0
+	for (var n = 0; n < mel.length; n++) {
+		if (mel[n] == '<') { octave--; continue }
+		if (mel[n] == '>') { octave++; continue }
+		if (mel[n] == '+') { len /= 2; continue }
+		if (mel[n] == '-') { len *= 2; continue }
+		if (mel[n] == ' ') {
+			spinFinish(spin)
+			fadeOut(spin.arr, len/10)
+			spinSine(spin, tone, len, 0)
+			continue
+		}
+		if (mel[n] == '.') {
+			spinFinish(spin)
+			fadeOut(spin.arr, len/2)
+			continue
+		}
+		var tone = scale[mel[n]]
+		var o = octave
+		while (o > 0) tone *= 2, o--
+		while (o < 0) tone /= 2, o++
+		spinSine(spin, tone, len, volume, spinSpeedEffect)
+	}
+}
+
+var maj = makeScale(261.63, majorScheme)
+
+function spinnerSample() {
+	var lead = newSpin(), bass = newSpin()
+	var mel1 = 'n.nm.ma.ad' + '+hg-hhhh' + '+gf-ggg' + 'sddd.'
+	var bas1 = '<n.n.m.m.a.a.n.'+'n.n.n.n' + 'b.b.b.b' + 'ccc'
+	melody(lead, maj, mel1, 0.2)
+	melody(bass, maj, bas1, 0.3)
+	spinFinish(lead)
+	spinFinish(bass)
+	var mix = mixArr(lead.arr, bass.arr, 0.2)
+	//fadeIn(lead.arr, 0.01)
+	//fadeOut(lead.arr, 0.01)
+	playSound(mix)	
+	ctx.clearRect(0, 0, 500, 200)
+	showWave(mix, 'rgb(0,128,0)', 0, 30)
+}
+
+spinnerSample()
+
+function playNote(k) {
+	var lead = newSpin()
+	for (var i = 0; i < 5; i++) {
+		spinSine(lead, maj[k], 0.02, 0.3, spinSpeedEffect)
+	}
+	spinFinish(lead)
+	fadeIn(lead.arr, 0.01)
+	fadeOut(lead.arr, 0.01)
+	playSound(lead.arr)	
+	ctx.clearRect(0, 0, 500, 200)
+	showWave(lead.arr, 'rgb(0,128,0)', 0, 30)
+}
+
+
+document.body.onkeydown = function(e){
+	//alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
+	var k = String.fromCharCode(e.keyCode)
+	if (!e.shiftKey) k = k.toLowerCase()
+	var j = majorScheme.indexOf(k)
+	if (j >= 0) {
+		playNote(k)
+	}
+}
+
+//textarea1.focus()
+</script>
