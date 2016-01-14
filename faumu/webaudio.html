@@ -1,3 +1,27 @@
+
+<canvas id=canvas1 width=500 height=200 style='border:1px solid gray'>
+</canvas>
+<br>
+<textarea id=textarea1 rows=15 cols=65 onclick=stopPlay() spellcheck="false">
+var lead = newSpin(), bass = newSpin()
+var mel1 = 'n.nm.ma.ad' + '+hg-hhhh' + '+gf-ggg' + 'sddd.'
+var bas1 = '<n.n.m.m.a.a.n.'+'n.n.n.n' + 'b.b.b.b' + 'ccc'
+melody(lead, maj, mel1, 0.2)
+melody(bass, maj, bas1, 0.3)
+spinFinish(lead)
+spinFinish(bass)
+var mix = mixArr(lead.arr, bass.arr, 0.2)
+fadeOut(lead.arr, 1)
+playSound(mix)
+ctx.clearRect(0, 0, 500, 200)
+showWave(mix, 'rgb(0,128,0)', 0, 30)
+</textarea>
+<br>
+
+
+<button onclick=exec()>exec</button>
+<button onclick=stopPlay()>stop</button>
+<script>
 /*
 	TODO:
 	- improve visualizers
@@ -7,20 +31,6 @@
 		a single array of samples, but store each note separately in
 		an array of arrays
 */
-<canvas id=canvas1 width=500 height=200 style='border:1px solid gray'>
-</canvas><button onclick=stopPlay()>stop</button>
-<br>
-<textarea id=textarea1 rows=10 cols=40 onclick=stopPlay()>
-	a = sine(441, 1)
-	show(a)
-	play(a)
-</textarea>
-
-
-
-<button onclick=exec()>exec</button>
-
-<script>
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 ctx = canvas1.getContext('2d')
 
@@ -239,7 +249,7 @@ function spinnerSample() {
 	showWave(mix, 'rgb(0,128,0)', 0, 30)
 }
 
-spinnerSample()
+//spinnerSample()
 
 function playNote(k) {
 	var lead = newSpin()
@@ -265,5 +275,5 @@ document.body.onkeydown = function(e){
 	}
 }
 
-//textarea1.focus()
+textarea1.focus()
 </script>
