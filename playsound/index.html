@@ -12,7 +12,10 @@
 <body id=body onload=go() onkeydown=keydown()>
 <button id=bpy onclick=switchLang(0) style="border:3px solid black">Pīnyīn</button>
 <button id=bcn onclick=switchLang(1)>汉语</button>
-<button id=ben onclick=switchLang(2)>English</button><p>
+<button id=ben onclick=switchLang(2)>English</button>
+ | <button id=bloop onclick=changeLoop()>Play once</button>
+ | <button id=bstop onclick=stopPlayback()>Stop</button>
+<p>
 <span id=nav></span><br>
 <span id=track></span><br>
 <span id=out></span><br>
@@ -24,6 +27,21 @@
 var URL = 'http://127.0.0.1:8000/snd.mp3'
 var URL = 'snd.mp3'
 var vis = [1,0,0]
+var playing = false, begin = -1
+var last = 0, playMode = 'once'
+
+function changeLoop() {
+	var s = bloop.innerHTML, t = ''
+	if (s == 'Play once') t = 'Loop forever'
+	if (s == 'Loop forever') t = 'Play all'
+	if (s == 'Play all') t = 'Play once'
+	if (t == 'Play once') playMode = 'once'
+	if (t == 'Loop forever') playMode = 'loop'
+	if (t == 'Play all') playMode = 'all'
+
+	bloop.innerHTML = t
+	
+}
 
 function switchLang(x) {
 	var langId, show
@@ -47,7 +65,7 @@ function getSprites() {
 	for (var i = 0; i < text.length; i++) {
 		R[''+i] = [at[i], at[i+1] - at[i]]
 		var t = '<y onclick=sprite('+i+')>'
-			+'<py>'+ text[i] +'</py> <cn>'+ cn[i] + '</cn> <en>'+ eng[i] + '</en></y>&nbsp;'
+			+'<py>'+ text[i] +'</py> <cn>'+ cn[i] + '</cn> <en>'+ eng[i] + '<br></en></y>&nbsp;'
 		if (t.indexOf('|') > 0) t = t.replace(/\|/g, ''), t += '<p>'
 //		t = t.replace(/ /g, '&nbsp;')
 		s += t + ' '
@@ -55,8 +73,6 @@ function getSprites() {
 	txt.innerHTML = s
 	return R
 }
-
-var last = 0
 
 function znext() {
 	last++
@@ -70,8 +86,6 @@ function sprite(a) {
 	sound.play(''+a)
 	last = a
 }
-
-var playing = false, begin = -1
 
 function go() {
 	nav.style.display = 'none'
@@ -89,8 +103,15 @@ function go() {
 			nav.style.backgroundColor = 'silver'
 		},
 		onend: function() {
-			playing = false
-			nav.style.backgroundColor = 'silver'
+			if (playMode == 'loop') {
+				sound.play(''+last) 
+			} else if (playMode == 'all') {
+				last++
+				sound.play(''+last)
+			} else {
+				playing = false
+				nav.style.backgroundColor = 'silver'
+			}
 		},
 		onload: function() {
 			txt.style.display = 'block'
@@ -138,14 +159,18 @@ function z(a) {
 	var P = a * 1000
 	if (playing) {
 		begin = P
-		log('...seek to '+P+',')
 	} else {
 		sound.play()
 		begin = P
 //		playing = true
-		log(P + ',')
 	} 
 	sound.pos(a)
+}
+
+function stopPlayback() {
+	sound.pause()
+	playing = false 
+	begin = -1
 }
 
 </script>
